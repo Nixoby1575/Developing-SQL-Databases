@@ -1,4 +1,4 @@
-use CursoSQL
+use Northwind
 go
 ---Crear un procedimiento almacenado usando ciclos y condicionantes
 CREATE PROCEDURE NUMEROS
