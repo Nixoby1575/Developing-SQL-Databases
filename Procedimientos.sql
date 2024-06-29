@@ -29,6 +29,11 @@ INSERT INTO SUPPLIERS (CompanyName, ContactName, ContactTitle, Country)
 VALUES
 (@CompanyName, @ContactName, @ContactTitle, @Country)
 GO
+	
+EXECUTE INSERT_SUPPLIER 'VISOAL', 'VICTOR CARDENAS', 'ING', 'GUATEMALA'
+GO
+	
+SELECT * FROM Suppliers WHERE CompanyName='VISOAL'
 ---MODIFICAR PROCEDIMIENTO
 ALER PROCEDURE INSERT_SUPPLIER (
 @CompanyName VARCHAR(159), @ContactName VARCHAR(159), @ContactTitle VARCHAR(159)
