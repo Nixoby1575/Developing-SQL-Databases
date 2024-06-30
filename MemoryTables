@@ -50,3 +50,8 @@ WHERE NOM1='VICTOR'
 --Modificar index en la tabla memoria
 ALTER TABLE MemoryOptimizedCiudadanoTable 
 ADD INDEX IDX_NOMBRE (NOM1, NOM2)
+-- Modificar tabla para agregar índice tipo hash
+ALTER TABLE MemoryOptimizedCiudadanoTable
+ADD INDEX LUX_APELLIDOS HASH (APE1) WITH (BUCKET_COUNT=50000)
+--Consulta
+SELECT DISTINCT APE1 FROM MemoryOptimizedCiudadanoTable
