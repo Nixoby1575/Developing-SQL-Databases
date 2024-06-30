@@ -1,30 +1,32 @@
 /*
 Triggers
 Dos tipos de trigger: After   e  instead of
--After ocurren luego de una acci髇 de Insert, update, delete
--Instead off  Cancela la accion desencadenadora y puede realizar otra acci髇.
+-After ocurren luego de una acci贸n de Insert, update, delete
+-Instead off  Cancela la accion desencadenadora y puede realizar otra acci贸n.
 */
 Use Northwind
 go
 --Crear una tabla a
-Create table HistorialEliminaci髇
+Create table HistorialEliminaci贸n
 (codigo int identity(1,1) primary key
 ,fecha date
 ,accion varchar(100)
 , usuario varchar(100)
 )
 go
---Registrar la eliminaci髇 de dato en la tabla customers y cargarla a HistorialElimimnacion
+--Registrar la eliminaci贸n de dato en la tabla customers y cargarla a HistorialElimimnacion
 Create trigger Tr_insert_cliente
 on customers for Delete
 as
 Begin
-Insert into HistorialEliminaci髇 (fecha, accion, usuario ) values (getdate()
+Insert into HistorialEliminaci贸n (fecha, accion, usuario ) values (getdate()
 , 'Se elimino un cliente ', user)
 End
 --Eliminar un cliente para probar el registro en HistorialEliminacion
 Delete from customers where customerid='PARIS'
 go
+-- Consultar tabla de HistorialEliminaci贸n
+select * from HistorialEliminaci贸n
 
 /*
 Inspeccionar las tablas products y [order details] para revisar que las dos cuentan con el campo Unitprice,
@@ -50,8 +52,8 @@ values (10248, 2, 10, 0)
 Select * from [Order Details] where orderid=10248
 go
 /*
-Ahora vamos a actualizar las unidades en existencia basado sobre el ingreso, eliminaci髇
-o modificaci髇 de datos en la tabla [order details]
+Ahora vamos a actualizar las unidades en existencia basado sobre el ingreso, eliminaci贸n
+o modificaci贸n de datos en la tabla [order details]
 */
 
 -----------Trigger de insercion que quita del inventario
@@ -65,7 +67,7 @@ from inserted i inner join products p
 on i.productid=p.productid
 End
 go
------------Trigger de eliminaci髇 que regresa a inventario
+-----------Trigger de eliminaci贸n que regresa a inventario
 Create trigger Tr_regresar_stock
 on [order details] for delete
 as
