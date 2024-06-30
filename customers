@@ -1,3 +1,4 @@
+--Creación de tabla
 CREATE TABLE "Customers" (
 	"CustomerID" nchar (5) NOT NULL ,
 	"CompanyName" nvarchar (40) NOT NULL ,
@@ -26,6 +27,6 @@ GO
 GO
 
 
-  
+  -- Inserccion de registro en tabla customers
 INSERT "Customers" VALUES('PARIS','Paris spécialités','Marie Bertrand','Owner','265, boulevard Charonne','Paris',NULL,'75012','France','(1) 42.34.22.66','(1) 42.34.22.77')
 
