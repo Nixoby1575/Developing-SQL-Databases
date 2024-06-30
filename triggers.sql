@@ -15,7 +15,7 @@ Create table HistorialEliminación
 )
 go
 --Registrar la eliminación de dato en la tabla customers y cargarla a HistorialElimimnacion
-Create trigger Tr_insert_cliente
+Create trigger Tr_insert_client
 on customers for Delete
 as
 Begin
@@ -23,18 +23,35 @@ Insert into HistorialEliminación (fecha, accion, usuario ) values (getdate()
 , 'Se elimino un cliente ', user)
 End
 --Eliminar un cliente para probar el registro en HistorialEliminacion
-Delete from customers where customerid='PARIS'
+DELETE FROM customers WHERE customerid='PARIS'
 go
 -- Consultar tabla de HistorialEliminación
 select * from HistorialEliminación
 
+-- crear una tabla a partir de los datos de customers
+select *
+into deletecustomers
+from customers
+--- eliminar los datos a deletecustomers
+delete deletecustomers
+-- Consultar para asegurarse de que esté vacía
+Select * from deletecustomers
+go
+
+--- crear un trigger usando la tabla deleted
+CREATE TRIGGER TR_borradocliente
+on customers
+after delete
+as
+INSERT INTO deletecustomers Select * from deleted
+go
 /*
 Inspeccionar las tablas products y [order details] para revisar que las dos cuentan con el campo Unitprice,
 vamos a crear un trigger que al insertar un dato en [order details] se actualice el precio tomandolo
 de products
 */
-select * from products
 Select * from [Order Details]
+select * from products
 go
 --Creando el trigger
 Create trigger Tr_actualizar_precio
@@ -49,7 +66,7 @@ End
 Insert into [order details] (orderid, productid, quantity, discount)
 values (10248, 2, 10, 0)
 -----Verificar que el trigger ponga el precio que no enviamos en el insert
-Select * from [Order Details] where orderid=10248
+Select * from [Order Details] where orderid=10248 and productid=2
 go
 /*
 Ahora vamos a actualizar las unidades en existencia basado sobre el ingreso, eliminación
