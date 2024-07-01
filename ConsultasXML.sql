@@ -26,6 +26,9 @@ from customers as c inner join orders as o on c.CustomerID=o.CustomerID
 where c.CustomerID='ALFKI'
 for xml explicit
 go
+-- Realizamos las consultas
+select * from Orders
+select * from [Order Details]
 --agregar una columna tipo XML a la tabla orders
 Alter table orders
 Add Details xml
