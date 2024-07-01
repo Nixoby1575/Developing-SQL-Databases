@@ -1,0 +1,26 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using Microsoft.SqlServer.Server;
+
+public partial class StoredProcedures
+{
+    [Microsoft.SqlServer.Server.SqlProcedure]
+    public static void StoreProcedures ()
+    {
+        using(SqlConnection connection= new SqlConnection("context connection=true"))
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand("Select @@version", connection);
+            SqlDataReader reader = command.ExecuteReader();
+            SqlContext.Pipe.Send(reader);
+        }
+    }
+    [Microsoft.SqlServer.Server.SqlFunction]
+    public static SqlDouble MontoConIva(SqlDouble monto)
+    {
+        SqlDouble impuesto = monto * 0.12;
+        return monto + impuesto;
+    }
+}
