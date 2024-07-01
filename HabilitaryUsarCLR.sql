@@ -13,14 +13,13 @@ Reconfigure
 go
 --crear el ensamblado
 Create assembly StoredProceduresAsm from 
-'D:\vhcardenas\Documents\Visual Studio 2015\Projects\EjemploCLR\EjemploCLR\bin\Debug\EjemploCLR.dll'
+'D:\alexjf\Documents\Visual Studio 2015\Projects\EjemploCLR\EjemploCLR\bin\Debug\EjemploCLR.dll'
 with permission_set=SAFE
 go
 ---Creando el procedimiento que llama al CLR
 Create procedure GetVersion as External Name
 StoredProceduresAsm.StoredProcedures.StoreProcedures
 go
-
 --Creando la funcion que llama al CLR
 Create function Iva(@monto float)
 returns float
