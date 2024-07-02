@@ -74,8 +74,3 @@ Select * from dbo.Cliente
 --Eliminar una Mascara
 ALTER TABLE dbo.Cliente ALTER COLUMN Cliente_TarjetaCredito DROP MASKED;
 
-Select * 
-into Clientes2
-from dbo.Cliente
-
-Select * from clientes2
