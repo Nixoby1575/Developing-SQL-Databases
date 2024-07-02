@@ -13,27 +13,27 @@ Cliente_TarjetaCredito Varchar(100)
 )           
 go
 
- -- ingreso de datos de ejemplo
+  -- ingreso de datos de ejemplo
 Insert into dbo.Cliente 
 values(101,'Visoalgt','2016-08-11 00:34:51:090','YoshiTannamuri@visoalgt.com','9135-5555-8798')
 Insert into dbo.Cliente 
 values(102,'Cardenas Corp','2016-01-08 19:44:51:090','DanielTonini@cardenas.com','1555-9857-8709')
 Insert into dbo.Cliente 
-values(103,'Alfreds Futterkiste','2015-08-19 19:44:51:090','PhilipCramer@futterkiste.com','7675-3425-3433')
+values(103,'Alfreds Futterkiste','2015-19-08 19:44:51:090','PhilipCramer@futterkiste.com','7675-3425-3433')
 Insert into dbo.Cliente 
-values(104,'Antonio Moreno Taquería','2014-08-19 19:44:51:090','PatriciaMcKenna@tqueria.com','5535-0297-6523')
+values(104,'Antonio Moreno TaquerÃ­a','2014-19-08 19:44:51:090','PatriciaMcKenna@tqueria.com','5535-0297-6523')
 Insert into dbo.Cliente 
 values(105,'Around the Horn','2014-08-04 19:44:51:090','YoshiLatimer@araound.com','1354-2534-4534')
 Insert into dbo.Cliente 
-values(106,'Berglunds snabbköp','2015-08-10 19:44:51:090','chbrancar@beglunds.com','5203-4560-5455')
+values(106,'Berglunds snabbkÃ¶p','2015-08-10 19:44:51:090','chbrancar@beglunds.com','5203-4560-5455')
 Insert into dbo.Cliente 
-values(107,'Bs Beverages','2015-04-17 19:44:51:090','SimonCrowther@beverages','555-9482-3587')
+values(107,'Bs Beverages','2015-17-04 19:44:51:090','SimonCrowther@beverages','555-9482-3587')
 Insert into dbo.Cliente 
-values(108,'Bólido Comidas preparadasCable VGA','2015-08-21 19:44:51:090','FelipeIzquierdo@bolido.com','555-7555-4545')
+values(108,'BÃ³lido Comidas preparadasCable VGA','2015-21-08 19:44:51:090','FelipeIzquierdo@bolido.com','555-7555-4545')
 Insert into dbo.Cliente 
 values(109,'X enterprice','2015-08-06 19:44:51:090','CarlosGonzalez@xenterprice.com','2833-2951-4544')
 Insert into dbo.Cliente 
-values(110,'Chop-suey Chinese','2015-08-26 19:44:51:090','JohnSteel@chop.com','5535-1340-3453')
+values(110,'Chop-suey Chinese','2015-26-08 19:44:51:090','JohnSteel@chop.com','5535-1340-3453')
 go
 ---Consultar la tabla
 Select * from Cliente
@@ -61,7 +61,7 @@ Create user VICTOR without login;
 --asignacion de permisos a los usuarios de prueba
 GRANT SELECT ON dbo.Cliente to VICTOR;
 
---Ejecución de una consulta en nombre del usuario recien creado
+--EjecuciÃ³n de una consulta en nombre del usuario recien creado
 Execute ('SELECT * FROM DBO.Cliente') as user='VICTOR';
 go
 
